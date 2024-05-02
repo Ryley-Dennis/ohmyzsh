@@ -76,6 +76,8 @@ prompt_segment() {
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
     echo -n " %{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+# Can replace final " with SEGMENT_SEPARATOR on next line to move text to second line
+# $SEGMENT_SEPARATOR"
   else
     echo -n "%{%k%}"
   fi
@@ -217,7 +219,7 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment blue $CURRENT_FG '%~'
+  prompt_segment blue $CURRENT_FG '%3~'
 }
 
 # Virtualenv: current working virtualenv
@@ -268,4 +270,4 @@ build_prompt() {
   prompt_end
 }
 
-PROMPT='%{%f%b%k%}$(build_prompt) '
+PROMPT='%{%f%b%k%}$(build_prompt)'
